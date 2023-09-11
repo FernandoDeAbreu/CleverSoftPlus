@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF16E348-92D2-4F0E-9FEC-A25A9E3E0E71}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CleverGourmet</RootNamespace>
+    <AssemblyName>CleverGourmet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conexao.cs" />
+    <Compile Include="frm_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Cliente.Designer.cs">
+      <DependentUpon>frm_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Categoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Categoria.Designer.cs">
+      <DependentUpon>frm_Categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Funcionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Funcionario.Designer.cs">
+      <DependentUpon>frm_Funcionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_MateriaPrima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MateriaPrima.Designer.cs">
+      <DependentUpon>frm_MateriaPrima.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Menu.Designer.cs">
+      <DependentUpon>frm_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Mesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Mesa.Designer.cs">
+      <DependentUpon>frm_Mesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Moeda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Moeda.Designer.cs">
+      <DependentUpon>frm_Moeda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Pagina_Inicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Pagina_Inicial.Designer.cs">
+      <DependentUpon>frm_Pagina_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_pdvGourmet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_pdvGourmet.Designer.cs">
+      <DependentUpon>frm_pdvGourmet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Produto.Designer.cs">
+      <DependentUpon>frm_Produto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modelo.Designer.cs">
+      <DependentUpon>Modelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_Cliente.resx">
+      <DependentUpon>frm_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Categoria.resx">
+      <DependentUpon>frm_Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Funcionario.resx">
+      <DependentUpon>frm_Funcionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_MateriaPrima.resx">
+      <DependentUpon>frm_MateriaPrima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Menu.resx">
+      <DependentUpon>frm_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Mesa.resx">
+      <DependentUpon>frm_Mesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Moeda.resx">
+      <DependentUpon>frm_Moeda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Pagina_Inicial.resx">
+      <DependentUpon>frm_Pagina_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_pdvGourmet.resx">
+      <DependentUpon>frm_pdvGourmet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Produto.resx">
+      <DependentUpon>frm_Produto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modelo.resx">
+      <DependentUpon>Modelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
