@@ -40,7 +40,6 @@ namespace CleverSoft
 
         #region layout do Form
 
-        //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private static extern void ReleaseCapture();
 
@@ -61,7 +60,6 @@ namespace CleverSoft
             }
         }
 
-        //METODOS PARA CERRAR,MAXIMIZAR, MINIMIZAR FORMULARIO------------------------------------------------------
         private int lx, ly;
 
         private int sw, sh;
@@ -90,7 +88,6 @@ namespace CleverSoft
             verificapermissoes();
         }
 
-        // /METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
 
         #endregion layout do Form
 
@@ -419,35 +416,39 @@ namespace CleverSoft
             {
                 sourceFile = @"CleverDB.s3db";
 
-                destinationFile = Application.StartupPath + @"\BKP_SYSTEM\BKP_" + data + "_" + hora;
+                using (FolderBrowserDialog dirDialog = new FolderBrowserDialog())
+                {
+                    DialogResult res = dirDialog.ShowDialog();
 
-                // Para mover um arquivo ou pasta para um novo local:
-                System.IO.File.Copy(sourceFile, destinationFile);
+                    if (res == DialogResult.OK)
+                    {
+                        string selectedDirectory = dirDialog.SelectedPath;
 
-                //    gravarFoto();
-                MessageBox.Show("Beckup realizado com sucesso!", "Clever Sistema");
+                        destinationFile = selectedDirectory + @"\BKP_" + data + "_" + hora;
+
+                        System.IO.File.Copy(sourceFile, destinationFile);
+
+                        MessageBox.Show("Beckup realizado com sucesso!", "Clever Sistema");
+                    }
+                   
+                }
+
+             
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
         }
 
         private void AbrirFormEnPanel(object formHijo)
         {
-            //if (this.panelContenedorForm.Controls.Count > 0)
-            //    this.panelContenedorForm.Controls.RemoveAt(0);
+           
             Form fh = formHijo as Form;
-            //fh.TopLevel = false;
-            //fh.FormBorderStyle = FormBorderStyle.None;
-            //fh.Dock = DockStyle.Fill;
-            //this.panelContenedorForm.Controls.Add(fh);
-            //this.panelContenedorForm.Tag = fh;
+           
             fh.ShowDialog();
         }
 
-        //METODO PARA MOSTRAR FORMULARIO DE LOGO Al CERRAR OTROS FORM ----------------------------------------------------------
         private void MostrarFormLogoAlCerrarForms(object sender, FormClosedEventArgs e)
         {
             //frm_Pagina_Inicial();
