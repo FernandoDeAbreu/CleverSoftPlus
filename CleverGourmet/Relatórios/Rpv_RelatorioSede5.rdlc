@@ -816,7 +816,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>PASTOR : DANIEL NUNES GONÇALVES</Value>
+                    <Value>PASTOR</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1005,7 +1005,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Rua Duque De Caxias, 1410 - Centro</Value>
+                    <Value>Rua GOAIS - Centro</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1075,7 +1075,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>CONG. JERUSALÉM</Value>
+                    <Value>CONG. SHEKINAH</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1197,6 +1197,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="contribuicao">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1222,6 +1226,11 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>saldoAnterior</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>contribuicao</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

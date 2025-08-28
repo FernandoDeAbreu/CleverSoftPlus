@@ -71,7 +71,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -800,7 +800,6 @@
     <EmbeddedResource Include="Relatórios\Rpv_RelatorioSede2.rdlc" />
     <EmbeddedResource Include="Relatórios\Rpv_RelatorioSede.rdlc" />
     <EmbeddedResource Include="Relatórios\Rpv_Secao.rdlc" />
-    <None Include="CleverSoft_TemporaryKey.pfx" />
     <None Include="DataSource\DataSource_Relatorios.xsc">
       <DependentUpon>DataSource_Relatorios.xsd</DependentUpon>
     </None>

@@ -1,29 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms;
 
 namespace CleverSoft
 {
     public partial class frmLogin : Form
     {
-        Conexao conexao = new Conexao();
-        AtualizarBancoDados atualizarSistema = new AtualizarBancoDados();
+        private Conexao conexao = new Conexao();
+        private AtualizarBancoDados atualizarSistema = new AtualizarBancoDados();
 
-        int idFunc;
-        string nomeFunc;
-        int idFilial;
-        string nomeFilial;
-        string versaoSistama = "0";
-        string versaoExibir;
+        private int idFunc;
+        private string nomeFunc;
+        private int idFilial;
+        private string nomeFilial;
+        private string versaoSistama = "0";
+        private string versaoExibir;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -31,18 +23,18 @@ namespace CleverSoft
             this.DoubleBuffered = true;
         }
 
-        //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private static extern void ReleaseCapture();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void PanelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         private void VerificarVersao()
         {
             conexao.Abre_Conexao();
@@ -50,7 +42,6 @@ namespace CleverSoft
             try
             {
                 string SQLCunsultaEmpr = "SELECT * FROM TBVERSAO";
-
 
                 conexao.cmd.Connection = conexao.conexao;
                 conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -70,9 +61,10 @@ namespace CleverSoft
             {
                 versaoSistama = "0";
             }
-           
+
             conexao.Fecha_Conexao();
         }
+
         private void login()
         {
             if (tbox_Usuario.Text == "")
@@ -92,9 +84,7 @@ namespace CleverSoft
 
             conexao.Abre_Conexao();
 
-            string SQLCunsultaEmpr = "SELECT * FROM TBFUNCIONARIO WHERE DTEXCLUSAO IS NULL AND USUARIO = '" + tbox_Usuario.Text + "' AND SENHA = '"+ tbox_Senha.Text + "'";
-
-
+            string SQLCunsultaEmpr = "SELECT * FROM TBFUNCIONARIO WHERE DTEXCLUSAO IS NULL AND USUARIO = '" + tbox_Usuario.Text + "' AND SENHA = '" + tbox_Senha.Text + "'";
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -108,18 +98,16 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 idFunc = Convert.ToInt32(conexao.dataReader["ID"].ToString());
                 nomeFunc = conexao.dataReader["Nome"].ToString();
-               // MessageBox.Show("Seja bem Vindo: " + nomeFunc);
+                // MessageBox.Show("Seja bem Vindo: " + nomeFunc);
                 o++;
             }
-            
+
             if (o == 1)
             {
-
                 pesquisarEmpresa();
                 frm_Menux a = new frm_Menux();
                 a.idFunc = this.idFunc;
@@ -128,11 +116,8 @@ namespace CleverSoft
                 a.nomeFilial = this.nomeFilial;
                 a.lbl_versa.Text = versaoExibir;
 
-
                 atualizarSistema.versaoSistema = Convert.ToInt32(this.versaoSistama);
                 atualizarSistema.atualizar();
-
-
 
                 a.Show();
                 this.Hide();
@@ -144,13 +129,12 @@ namespace CleverSoft
 
             conexao.Fecha_Conexao();
         }
+
         private void pesquisarEmpresa()
         {
             conexao.Abre_Conexao();
 
             string SQLCunsultaEmpr = "SELECT * FROM TBFILIAL";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -164,7 +148,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 idFilial = Convert.ToInt32(conexao.dataReader["ID"].ToString());
@@ -173,20 +156,24 @@ namespace CleverSoft
             }
             conexao.Fecha_Conexao();
         }
+
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             frm_Menu a = new frm_Menu();
             a.Show();
             this.Hide();
         }
+
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
             login();
         }
+
         private void tbox_Usuario_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -199,6 +186,7 @@ namespace CleverSoft
                 tbox_Senha.Focus();
             }
         }
+
         private void tbox_Senha_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -219,13 +207,12 @@ namespace CleverSoft
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             this.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label4.Text =  DateTime.Now.ToLongDateString() +", "+ DateTime.Now.ToLongTimeString();
+            label4.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToLongTimeString();
         }
     }
 }

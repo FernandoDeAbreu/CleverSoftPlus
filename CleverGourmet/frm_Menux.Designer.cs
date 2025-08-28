@@ -311,7 +311,7 @@
             this.btn_Banco.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Banco.Name = "btn_Banco";
             this.btn_Banco.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_Banco.Size = new System.Drawing.Size(103, 52);
+            this.btn_Banco.Size = new System.Drawing.Size(104, 52);
             this.btn_Banco.Text = "BANCO E CONTA";
             this.btn_Banco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Banco.Click += new System.EventHandler(this.btn_Banco_Click);
@@ -347,7 +347,7 @@
             this.btn_GrupoContaGerencial.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_GrupoContaGerencial.Name = "btn_GrupoContaGerencial";
             this.btn_GrupoContaGerencial.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_GrupoContaGerencial.Size = new System.Drawing.Size(92, 52);
+            this.btn_GrupoContaGerencial.Size = new System.Drawing.Size(93, 52);
             this.btn_GrupoContaGerencial.Text = "GRUPO CONTA";
             this.btn_GrupoContaGerencial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_GrupoContaGerencial.Click += new System.EventHandler(this.btn_GrupoContaGerencial_Click);
@@ -359,7 +359,7 @@
             this.btn_ContaGerencial.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_ContaGerencial.Name = "btn_ContaGerencial";
             this.btn_ContaGerencial.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_ContaGerencial.Size = new System.Drawing.Size(114, 52);
+            this.btn_ContaGerencial.Size = new System.Drawing.Size(115, 52);
             this.btn_ContaGerencial.Text = "CONTA GERENCIAL";
             this.btn_ContaGerencial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_ContaGerencial.Click += new System.EventHandler(this.btn_ContaGerencial_Click);
@@ -432,7 +432,7 @@
             this.btn_ContaApagar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_ContaApagar.Name = "btn_ContaApagar";
             this.btn_ContaApagar.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_ContaApagar.Size = new System.Drawing.Size(107, 58);
+            this.btn_ContaApagar.Size = new System.Drawing.Size(108, 58);
             this.btn_ContaApagar.Text = "CONTAS A PAGAR";
             this.btn_ContaApagar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_ContaApagar.Click += new System.EventHandler(this.btn_ContaApagar_Click);
@@ -444,7 +444,7 @@
             this.btn_ContasARecener.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_ContasARecener.Name = "btn_ContasARecener";
             this.btn_ContasARecener.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_ContasARecener.Size = new System.Drawing.Size(117, 58);
+            this.btn_ContasARecener.Size = new System.Drawing.Size(118, 58);
             this.btn_ContasARecener.Text = "CONTAS A RECEBER";
             this.btn_ContasARecener.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_ContasARecener.Click += new System.EventHandler(this.btn_ContasARecener_Click);
@@ -459,7 +459,7 @@
             this.btnContribuicao.Image = global::CleverSoft.Properties.Resources.coins_in_hand;
             this.btnContribuicao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnContribuicao.Name = "btnContribuicao";
-            this.btnContribuicao.Size = new System.Drawing.Size(96, 58);
+            this.btnContribuicao.Size = new System.Drawing.Size(97, 58);
             this.btnContribuicao.Text = "CONTRIBUIÇÃO";
             this.btnContribuicao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnContribuicao.Click += new System.EventHandler(this.btnContribuicao_Click);
@@ -496,7 +496,7 @@
             this.btn_Tranferir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Tranferir.Name = "btn_Tranferir";
             this.btn_Tranferir.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btn_Tranferir.Size = new System.Drawing.Size(76, 58);
+            this.btn_Tranferir.Size = new System.Drawing.Size(77, 58);
             this.btn_Tranferir.Text = "TRANSFERIR";
             this.btn_Tranferir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Tranferir.Click += new System.EventHandler(this.btn_Tranferir_Click);
@@ -508,7 +508,7 @@
             this.btn_Extrato.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Extrato.Name = "btn_Extrato";
             this.btn_Extrato.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btn_Extrato.Size = new System.Drawing.Size(66, 58);
+            this.btn_Extrato.Size = new System.Drawing.Size(68, 58);
             this.btn_Extrato.Text = "EXTRATO";
             this.btn_Extrato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Extrato.Click += new System.EventHandler(this.btn_Extrato_Click);
@@ -518,7 +518,7 @@
             this.btn_RelatorioSede.Image = global::CleverSoft.Properties.Resources.bug_report;
             this.btn_RelatorioSede.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_RelatorioSede.Name = "btn_RelatorioSede";
-            this.btn_RelatorioSede.Size = new System.Drawing.Size(105, 58);
+            this.btn_RelatorioSede.Size = new System.Drawing.Size(106, 58);
             this.btn_RelatorioSede.Text = "RELATÓRIOS SEDE";
             this.btn_RelatorioSede.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_RelatorioSede.Click += new System.EventHandler(this.btn_RelatorioSede_Click);
@@ -594,7 +594,7 @@
             this.btn_Atualizao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Atualizao.Name = "btn_Atualizao";
             this.btn_Atualizao.Padding = new System.Windows.Forms.Padding(7, 3, 7, 3);
-            this.btn_Atualizao.Size = new System.Drawing.Size(103, 58);
+            this.btn_Atualizao.Size = new System.Drawing.Size(104, 58);
             this.btn_Atualizao.Text = "ATUALIZAÇÃO";
             this.btn_Atualizao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Atualizao.Click += new System.EventHandler(this.btn_Atualizao_Click);
@@ -618,7 +618,7 @@
             this.btn_Suporte.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Suporte.Name = "btn_Suporte";
             this.btn_Suporte.Padding = new System.Windows.Forms.Padding(7, 3, 7, 3);
-            this.btn_Suporte.Size = new System.Drawing.Size(73, 58);
+            this.btn_Suporte.Size = new System.Drawing.Size(74, 58);
             this.btn_Suporte.Text = "SUPORTE";
             this.btn_Suporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Suporte.Click += new System.EventHandler(this.btn_Suporte_Click);
@@ -670,7 +670,7 @@
             this.btnTrocaUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTrocaUsuario.Name = "btnTrocaUsuario";
             this.btnTrocaUsuario.Padding = new System.Windows.Forms.Padding(7, 3, 7, 3);
-            this.btnTrocaUsuario.Size = new System.Drawing.Size(111, 58);
+            this.btnTrocaUsuario.Size = new System.Drawing.Size(112, 58);
             this.btnTrocaUsuario.Text = "Troca de usuário";
             this.btnTrocaUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTrocaUsuario.Click += new System.EventHandler(this.btnTrocaUsuario_Click);
@@ -769,10 +769,10 @@
             this.linkLabel1.LinkColor = System.Drawing.Color.DarkOrange;
             this.linkLabel1.Location = new System.Drawing.Point(104, 15);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(457, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(148, 17);
             this.linkLabel1.TabIndex = 35;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Está é uma versão de avaliação Clique aqui para obter a versão completa";
+            this.linkLabel1.Text = "Congregação Shekinah";
             this.linkLabel1.Visible = false;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 

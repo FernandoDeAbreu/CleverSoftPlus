@@ -36,13 +36,13 @@ namespace CleverSoft.Financeiro
             lbl_NomeRotina.Text = pagarReceber;
             tboxTipoData.Text = "VENCIMENTO";
 
-            if (pagarReceber == "CONTAS À PAGAR")
+            if (pagarReceber == "DESPESAS")
             {
                 tipo = "D";
                 tbParceiro = "TBFORNECEDOR";
             }
 
-            if (pagarReceber == "CONTAS À RECEBER")
+            if (pagarReceber == "RECEITAS")
             {
                 tipo = "R";
                 tbParceiro = "TBCLIENTE";

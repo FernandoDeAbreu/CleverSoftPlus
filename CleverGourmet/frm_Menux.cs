@@ -1,42 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CleverSoft
 {
     public partial class frm_Menux : Form
     {
+        private ConexaoLicenca Licenca = new ConexaoLicenca();
+        private Conexao conexao = new Conexao();
 
-        ConexaoLicenca Licenca = new ConexaoLicenca();
-        Conexao conexao = new Conexao();
-      
-        string dtInstalacao;
-        string nomeLicenca;
-        string email;
+        private string dtInstalacao;
+        private string nomeLicenca;
+        private string email;
 
-        string totalCadastroPermitidos;
-        string totalVendas;
-        string totalProdutos;
+        private string totalCadastroPermitidos;
+        private string totalVendas;
+        private string totalProdutos;
 
-        string serialHD;
-        string chaveAtivacao;
-        int o = 0;
+        private string serialHD;
+        private string chaveAtivacao;
+        private int o = 0;
 
-        string sourceFile;
-        string destinationFile;
+        private string sourceFile;
+        private string destinationFile;
         public int idFunc;
         public string nomeFunc;
         public int idFilial;
         public string nomeFilial;
-       
 
         public frm_Menux()
         {
@@ -44,16 +36,16 @@ namespace CleverSoft
             // Essas linhas eliminam a oscilação do formulário ou controles na interface gráfica (mas não 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
-           
         }
 
-        #region layout do Form 
+        #region layout do Form
+
         //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private static extern void ReleaseCapture();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void PanelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -70,13 +62,13 @@ namespace CleverSoft
         }
 
         //METODOS PARA CERRAR,MAXIMIZAR, MINIMIZAR FORMULARIO------------------------------------------------------
-        int lx, ly;
-        int sw, sh;
+        private int lx, ly;
+
+        private int sw, sh;
 
         private void iconminimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
 
         private void frm_Menux_Load(object sender, EventArgs e)
@@ -90,14 +82,9 @@ namespace CleverSoft
             iconmaximizar.Visible = false;
             iconrestaurar.Visible = true;
 
-
-            lbl_NomeUsuario.Text =  nomeFunc;
+            lbl_NomeUsuario.Text = nomeFunc;
             lbl_Empresa.Text = nomeFilial;
             pboxImagemSistema.ImageLocation = Application.StartupPath + @"\imagemSistema.png";
-            
-           
-
-          
 
             licenca();
             verificapermissoes();
@@ -105,7 +92,7 @@ namespace CleverSoft
 
         // /METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
 
-        #endregion
+        #endregion layout do Form
 
         public static void abrirNavegador(string x)
         {
@@ -114,21 +101,21 @@ namespace CleverSoft
                 // System.Diagnostics.Process.Start("cmd", "/C start" + " " + x);
                 //try
                 //{
-                    System.Diagnostics.Process.Start("chrome.exe", x);
+                System.Diagnostics.Process.Start("chrome.exe", x);
                 //}
                 //catch (Exception)
                 //{
-
                 //}
             }
         }
+
         private void verificapermissoes()
         {
             int cad = 0;
             foreach (ToolStripItem botao in Cadastrar.Items)
             {
-               conexao.Abre_Conexao();
-               string SQLCunsultaEmpr = "SELECT * FROM TBPERMISSAO WHERE IDFUNC = '" + idFunc + "' AND NOMEROTINA = '" + botao.Text + "'";
+                conexao.Abre_Conexao();
+                string SQLCunsultaEmpr = "SELECT * FROM TBPERMISSAO WHERE IDFUNC = '" + idFunc + "' AND NOMEROTINA = '" + botao.Text + "'";
 
                 conexao.cmd.Connection = conexao.conexao;
                 conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -140,19 +127,17 @@ namespace CleverSoft
 
                 int o = 0;
 
-
                 while (conexao.dataReader.Read())
                 {
-                   o++;
-                   cad++;
-
+                    o++;
+                    cad++;
                 }
 
-                if ( o == 0)
+                if (o == 0)
                 {
                     botao.Visible = false;
                 }
-               
+
                 conexao.Fecha_Conexao();
             }
             if (cad <= 0)
@@ -176,7 +161,6 @@ namespace CleverSoft
 
                 int o = 0;
 
-
                 while (conexao.dataReader.Read())
                 {
                     o++;
@@ -199,7 +183,7 @@ namespace CleverSoft
             foreach (ToolStripItem botao in Sistema.Items)
             {
                 if (botao.Text != "")
-                 conexao.Abre_Conexao();
+                    conexao.Abre_Conexao();
                 string SQLCunsultaEmpr = "SELECT * FROM TBPERMISSAO WHERE IDFUNC = '" + idFunc + "' AND NOMEROTINA = '" + botao.Text + "'";
 
                 conexao.cmd.Connection = conexao.conexao;
@@ -211,7 +195,6 @@ namespace CleverSoft
                 conexao.dataReader = conexao.cmd.ExecuteReader();
 
                 int o = 0;
-
 
                 while (conexao.dataReader.Read())
                 {
@@ -247,7 +230,6 @@ namespace CleverSoft
 
                 int o = 0;
 
-
                 while (conexao.dataReader.Read())
                 {
                     o++;
@@ -265,8 +247,8 @@ namespace CleverSoft
             {
                 btn_Sair.Visible = false;
             }
-
         }
+
         public void GetVolumeSerial()
         {
             string strDriveLetter = "";
@@ -276,12 +258,12 @@ namespace CleverSoft
 
             disk.Get();
             serialHD = disk["VolumeSerialNumber"].ToString();
-
         }
+
         private void getTotalVendas()
         {
-           string SQLCunsultaEmpr;
-           conexao.Abre_Conexao();
+            string SQLCunsultaEmpr;
+            conexao.Abre_Conexao();
 
             SQLCunsultaEmpr = "SELECT COUNT(ID) FROM TBVENDA";
             conexao.cmd.Connection = conexao.conexao;
@@ -296,8 +278,6 @@ namespace CleverSoft
             }
 
             conexao.Fecha_Conexao();
-
-
 
             conexao.Abre_Conexao();
             SQLCunsultaEmpr = "SELECT COUNT(ID) FROM TBPRODUTO";
@@ -314,6 +294,7 @@ namespace CleverSoft
 
             conexao.Fecha_Conexao();
         }
+
         private void licenca()
         {
             getTotalVendas();
@@ -323,8 +304,6 @@ namespace CleverSoft
 
             string SQLCunsultaEmpr = "SELECT ID, DTINSTALACAO, QTDVENDAPERMITIDAS, NOME, EMAIL, HD, CHAVE, QTDEUSUARIO FROM TBLICENCA";
 
-
-
             Licenca.cmd.Connection = Licenca.conexao;
             Licenca.cmd.CommandText = SQLCunsultaEmpr;
 
@@ -333,41 +312,39 @@ namespace CleverSoft
             Licenca.adapter.Fill(Licenca.dataSet, "PCPRODUT");
             Licenca.dataReader = Licenca.cmd.ExecuteReader();
 
-           
             while (Licenca.dataReader.Read())
             {
-
-                dtInstalacao            = Licenca.dataReader[1].ToString();
-                totalCadastroPermitidos     = Licenca.dataReader[2].ToString();
-                nomeLicenca             = Licenca.dataReader[3].ToString();
-                email                   = Licenca.dataReader[4].ToString();
-                hd                      = Licenca.dataReader[5].ToString();
-                chaveAtivacao           = Licenca.dataReader[6].ToString();
-
+                dtInstalacao = Licenca.dataReader[1].ToString();
+                totalCadastroPermitidos = Licenca.dataReader[2].ToString();
+                nomeLicenca = Licenca.dataReader[3].ToString();
+                email = Licenca.dataReader[4].ToString();
+                hd = Licenca.dataReader[5].ToString();
+                chaveAtivacao = Licenca.dataReader[6].ToString();
             }
-        
-           
-                #region INSERT
-                Licenca.Abre_Conexao();
-                string insert = "UPDATE TBLICENCA SET " +
-                                                   "DTINSTALACAO = @DTINSTALACAO,     " +
-                                                   "HD           = @HD     " +
-                                                  " WHERE  ID = 1";
 
-                Licenca.cmd.Connection = Licenca.conexao;
-                Licenca.cmd.CommandText = insert;
-                Licenca.cmd.Parameters.AddWithValue("DTINSTALACAO", DateTime.Now.ToShortDateString());
-                Licenca.cmd.Parameters.AddWithValue("HD", serialHD);
+            #region INSERT
 
-                Licenca.cmd.ExecuteNonQuery();
+            Licenca.Abre_Conexao();
+            string insert = "UPDATE TBLICENCA SET " +
+                                               "DTINSTALACAO = @DTINSTALACAO,     " +
+                                               "HD           = @HD     " +
+                                              " WHERE  ID = 1";
 
-                Licenca.Fecha_Conexao();
-                #endregion
+            Licenca.cmd.Connection = Licenca.conexao;
+            Licenca.cmd.CommandText = insert;
+            Licenca.cmd.Parameters.AddWithValue("DTINSTALACAO", DateTime.Now.ToShortDateString());
+            Licenca.cmd.Parameters.AddWithValue("HD", serialHD);
+
+            Licenca.cmd.ExecuteNonQuery();
+
+            Licenca.Fecha_Conexao();
+
+            #endregion INSERT
 
             string idInstall = "";
             string chaveInstall = "";
-            string pr = "CLEVER" + hd; 
-            string string_numeros = "CLEVER" + hd; 
+            string pr = "CLEVER" + hd;
+            string string_numeros = "CLEVER" + hd;
             int somatorio = 0;
             foreach (char s in pr)
             {
@@ -377,7 +354,6 @@ namespace CleverSoft
                     somatorio += Convert.ToInt32(Convert.ToString(s));
                     idInstall = idInstall + s;
                 }
-
             }
 
             pr = chaveAtivacao;
@@ -390,16 +366,10 @@ namespace CleverSoft
                     string_numeros2 += s;
                     somatorio2 += Convert.ToInt32(Convert.ToString(s));
                     chaveInstall = chaveInstall + s;
-
                 }
-
             }
 
-
-            
-          
-                       
-           if (Convert.ToInt32(totalVendas) >= Convert.ToInt32(totalCadastroPermitidos))
+            if (Convert.ToInt32(totalVendas) >= Convert.ToInt32(totalCadastroPermitidos))
             {
                 MessageBox.Show("Você atingiu o limente de vendas para a versão de teste, compre a versão completa para continuar usando o sistema", "Clever Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frm_Licenca a = new frm_Licenca();
@@ -422,7 +392,6 @@ namespace CleverSoft
                 Application.Exit();
             }
 
-
             if (chaveInstall != idInstall + 2020)
             {
                 linkLabel1.Visible = true;
@@ -440,11 +409,11 @@ namespace CleverSoft
 
             Licenca.Fecha_Conexao();
         }
+
         private void backup()
         {
             string data = DateTime.Now.ToShortDateString().Replace("/", "");
             string hora = DateTime.Now.ToLongTimeString().Replace(":", "");
-
 
             try
             {
@@ -457,15 +426,14 @@ namespace CleverSoft
 
                 //    gravarFoto();
                 MessageBox.Show("Beckup realizado com sucesso!", "Clever Sistema");
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
-
             }
         }
+
         private void AbrirFormEnPanel(object formHijo)
         {
             //if (this.panelContenedorForm.Controls.Count > 0)
@@ -478,11 +446,13 @@ namespace CleverSoft
             //this.panelContenedorForm.Tag = fh;
             fh.ShowDialog();
         }
+
         //METODO PARA MOSTRAR FORMULARIO DE LOGO Al CERRAR OTROS FORM ----------------------------------------------------------
         private void MostrarFormLogoAlCerrarForms(object sender, FormClosedEventArgs e)
         {
             //frm_Pagina_Inicial();
         }
+
         private void btnProduto_Click(object sender, EventArgs e)
         {
             frm_Produto fm = new frm_Produto();
@@ -503,7 +473,7 @@ namespace CleverSoft
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(fm);
         }
-       
+
         private void btnFornecedor_Click(object sender, EventArgs e)
         {
             frm_Fornecedor fm = new frm_Fornecedor();
@@ -545,6 +515,7 @@ namespace CleverSoft
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(fm);
         }
+
         private void btnAjustarEstoque_Click(object sender, EventArgs e)
         {
             Produto.frmAjustarEstoque fm = new Produto.frmAjustarEstoque();
@@ -614,15 +585,14 @@ namespace CleverSoft
         private void btn_ContaApagar_Click(object sender, EventArgs e)
         {
             CleverSoft.Financeiro.frmFinanceiro fm = new CleverSoft.Financeiro.frmFinanceiro();
-            fm.pagarReceber = "CONTAS À PAGAR";
+            fm.pagarReceber = "DESPESAS";
             fm.ShowDialog();
-
         }
 
         private void btn_ContasARecener_Click(object sender, EventArgs e)
         {
             CleverSoft.Financeiro.frmFinanceiro fm = new CleverSoft.Financeiro.frmFinanceiro();
-            fm.pagarReceber = "CONTAS À RECEBER";
+            fm.pagarReceber = "RECEITAS";
             fm.ShowDialog();
         }
 
@@ -681,6 +651,7 @@ namespace CleverSoft
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(fm);
         }
+
         private void btn_historicoVenda_Click(object sender, EventArgs e)
         {
             frm_HistoricoVendas fm = new frm_HistoricoVendas();
@@ -715,7 +686,7 @@ namespace CleverSoft
         {
             frm_Suporte fm = new frm_Suporte();
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
-            
+
             AbrirFormEnPanel(fm);
         }
 
@@ -765,38 +736,41 @@ namespace CleverSoft
         {
             tabControl1.SelectedIndex = 3;
         }
+
         private void btn_RelatorioSede_Click(object sender, EventArgs e)
         {
             Igreja.frmRelatorioSede fm = new Igreja.frmRelatorioSede();
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(fm);
         }
+
         private void btn_Vender_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 4;
         }
+
         private void panelContenedorPrincipal_Paint(object sender, PaintEventArgs e)
         {
-
         }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             abrirNavegador("https://clever.infoglobal.com.br/");
-
         }
+
         private void frm_Menux_FormClosed(object sender, FormClosedEventArgs e)
         {
-           Application.Exit();
+            Application.Exit();
         }
+
         private void frm_Menux_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-
         }
+
         private void btn_OrdemServico_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 7;
-
         }
 
         private void btnAbrirCaixar_Click(object sender, EventArgs e)
@@ -827,14 +801,13 @@ namespace CleverSoft
             {
                 frmAbrirCaixa a = new frmAbrirCaixa();
                 a.idFunc = idFunc;
-                 a.tboxParceiro.Text = lbl_NomeUsuario.Text;
+                a.tboxParceiro.Text = lbl_NomeUsuario.Text;
                 a.ShowDialog();
-
             }
             else
             {
                 MessageBox.Show("A Caixa de " + DateTime.Now.ToShortDateString() + " para o usuário " + lbl_NomeUsuario.Text + ", já encontra-se aberto.", "Clever Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
+            }
 
             conexao.Fecha_Conexao();
         }

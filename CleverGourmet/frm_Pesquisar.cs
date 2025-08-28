@@ -1,38 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CleverSoft
 {
     public partial class frm_Pesquisar : Form
     {
-        Conexao conexao = new Conexao();
+        private Conexao conexao = new Conexao();
         public string RotinaOrigem;
-        frm_ContasReceber frmContasPAgar;
-        frm_ContasPagar instaContapagar;
-        frm_MoedaCobranca instCobranca;
-        frmDigitaPedidoCompras isntPedidoCompra;
-        frm_Secao instSecao;
-        frm_Produto frmProduto;
-        frm_Permissao frmPermissa;
-        frm_ExtratoConta frmExtrato;
-        frmFecharCaixa frmfechaCaixa;
-        frmOrdemServico instOrdemServico;
-        Ordem_de_Serviço.frmMonitorOrdemServico instMonitorOs;
-       
-        Financeiro.frm_Transferir instTransferir;
-        Financeiro.frmFinanceiro instFinanceiro;
-        Financeiro.frmFinanceiroNovo instFinanceiroNovo;
+        private frm_ContasReceber frmContasPAgar;
+        private frm_ContasPagar instaContapagar;
+        private frm_MoedaCobranca instCobranca;
+        private frmDigitaPedidoCompras isntPedidoCompra;
+        private frm_Secao instSecao;
+        private frm_Produto frmProduto;
+        private frm_Permissao frmPermissa;
+        private frm_ExtratoConta frmExtrato;
+        private frmFecharCaixa frmfechaCaixa;
+        private frmOrdemServico instOrdemServico;
+        private Ordem_de_Serviço.frmMonitorOrdemServico instMonitorOs;
 
-        Conta_Gerencial.frmContaGerencialNovo instContaGerencialNovo;
+        private Financeiro.frm_Transferir instTransferir;
+        private Financeiro.frmFinanceiro instFinanceiro;
+        private Financeiro.frmFinanceiroNovo instFinanceiroNovo;
 
+        private Conta_Gerencial.frmContaGerencialNovo instContaGerencialNovo;
 
         public frm_Pesquisar(Ordem_de_Serviço.frmMonitorOrdemServico monitorOs)
         {
@@ -40,93 +32,107 @@ namespace CleverSoft
             instMonitorOs = monitorOs;
             lbl_NomeRotina.Text = instMonitorOs.Text;
         }
+
         public frm_Pesquisar(frmOrdemServico ordemServico)
         {
             InitializeComponent();
             instOrdemServico = ordemServico;
             lbl_NomeRotina.Text = instOrdemServico.Text;
         }
+
         public frm_Pesquisar(frmFecharCaixa fechaCaixa)
         {
             InitializeComponent();
             frmfechaCaixa = fechaCaixa;
             lbl_NomeRotina.Text = frmfechaCaixa.Text;
         }
+
         public frm_Pesquisar(Financeiro.frm_Transferir transferir)
         {
             InitializeComponent();
             instTransferir = transferir;
             lbl_NomeRotina.Text = instTransferir.Text;
         }
+
         public frm_Pesquisar(Financeiro.frmFinanceiro financeiro)
         {
             InitializeComponent();
             instFinanceiro = financeiro;
             lbl_NomeRotina.Text = instFinanceiro.Text;
         }
+
         public frm_Pesquisar(Financeiro.frmFinanceiroNovo financeiroNovo)
         {
             InitializeComponent();
             instFinanceiroNovo = financeiroNovo;
             lbl_NomeRotina.Text = instFinanceiroNovo.Text;
         }
+
         public frm_Pesquisar(frm_ExtratoConta extrato)
         {
             InitializeComponent();
             frmExtrato = extrato;
             lbl_NomeRotina.Text = frmExtrato.Text;
         }
+
         public frm_Pesquisar(frm_Permissao permissao)
         {
             InitializeComponent();
             frmPermissa = permissao;
             lbl_NomeRotina.Text = frmPermissa.Text;
         }
+
         public frm_Pesquisar(frm_Produto produto)
         {
             InitializeComponent();
             frmProduto = produto;
             lbl_NomeRotina.Text = frmProduto.Text;
         }
+
         public frm_Pesquisar(frm_Secao secao)
         {
             InitializeComponent();
             instSecao = secao;
             lbl_NomeRotina.Text = instSecao.Text;
         }
+
         public frm_Pesquisar(frmDigitaPedidoCompras pedidoCompra)
         {
             InitializeComponent();
             isntPedidoCompra = pedidoCompra;
             lbl_NomeRotina.Text = isntPedidoCompra.Text;
         }
+
         public frm_Pesquisar(Conta_Gerencial.frmContaGerencialNovo contaGerencialNovo)
         {
             InitializeComponent();
             instContaGerencialNovo = contaGerencialNovo;
             lbl_NomeRotina.Text = instContaGerencialNovo.Text;
         }
+
         public frm_Pesquisar(frm_ContasReceber contaReceber)
         {
             InitializeComponent();
             frmContasPAgar = contaReceber;
             lbl_NomeRotina.Text = frmContasPAgar.Text;
         }
+
         public frm_Pesquisar(frm_ContasPagar contapagar)
         {
             InitializeComponent();
             instaContapagar = contapagar;
             lbl_NomeRotina.Text = instaContapagar.Text;
         }
+
         public frm_Pesquisar(frm_MoedaCobranca cobranca)
         {
             InitializeComponent();
             instCobranca = cobranca;
             lbl_NomeRotina.Text = instCobranca.Text;
         }
-        void pesquisar_Secao()
-        {
 
+        private void pesquisar_Secao()
+        {
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -153,8 +159,7 @@ namespace CleverSoft
             col_GRUPO.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgv_resultado_pesquisa.Columns.Add(col_GRUPO);
 
-
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
@@ -168,7 +173,6 @@ namespace CleverSoft
                               "TBDEPTO G " +
                               "WHERE C.IDDEPTO = G.ID AND  C.DTEXCLUSAO IS NULL AND C.SECAO LIKE '%" + tboxPesquisar.Text + "%'";
 
-
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
 
@@ -179,7 +183,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -189,15 +192,13 @@ namespace CleverSoft
                 dgv_resultado_pesquisa.Rows[o].Cells["DEPARTAMENTO"].Value = conexao.dataReader["DEPARTAMENTO"].ToString();
                 dgv_resultado_pesquisa.DefaultCellStyle.ForeColor = Color.Black;
 
-
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Secao()
+
+        private void carregar_Secao()
         {
             try
             {
@@ -207,13 +208,11 @@ namespace CleverSoft
                 frmProduto.idDepto = dgv_resultado_pesquisa.CurrentRow.Cells["IDDEPTO"].Value.ToString();
             }
             catch (Exception)
-            {}
-         
+            { }
         }
 
-        void pesquisar_Departamento()
+        private void pesquisar_Departamento()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -228,14 +227,11 @@ namespace CleverSoft
             col_DEPARTAMENTO.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_DEPARTAMENTO);
 
-
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBDEPTO WHERE DTEXCLUSAO IS NULL AND DEPARTAMENTO LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -247,7 +243,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -257,11 +252,10 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Departamento()
+
+        private void carregar_Departamento()
         {
             try
             {
@@ -269,13 +263,11 @@ namespace CleverSoft
                 instSecao.codDEPARTAMENTO = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
             catch (Exception)
-            {}
-         
+            { }
         }
 
-        void pesquisar_GrupoContas()
+        private void pesquisar_GrupoContas()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -290,14 +282,11 @@ namespace CleverSoft
             col_GRUPOCONTA.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_GRUPOCONTA);
 
-
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBGRUPOCONTAG WHERE DTEXCLUSAO IS NULL AND ID > 10 AND GRUPOCONTA LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -309,7 +298,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -319,20 +307,17 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_GrupoContas()
+
+        private void carregar_GrupoContas()
         {
             instContaGerencialNovo.tboxGrupoContaGerencial.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["GRUPOCONTA"].Value.ToString();
             instContaGerencialNovo.codGrupoConta = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
-
         }
 
-        void pesquisar_Fornecedor()
+        private void pesquisar_Fornecedor()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -347,20 +332,17 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
             DataGridViewTextBoxColumn col_CPF = new DataGridViewTextBoxColumn();
             col_CPF.Name = "CNPJ_CPF";
             col_CPF.HeaderText = "CNPJ / CPF";
             col_CPF.Width = 160;
             dgv_resultado_pesquisa.Columns.Add(col_CPF);
 
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBFORNECEDOR WHERE DTEXCLUSAO IS NULL AND RAZAOSOCIAL LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -372,7 +354,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -383,11 +364,10 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Fornecedor()
+
+        private void carregar_Fornecedor()
         {
             try
             {
@@ -396,7 +376,6 @@ namespace CleverSoft
 
                 frmContasPAgar.tboxParceiroP.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
                 frmContasPAgar.codParceirop = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
-
             }
             catch (Exception)
             { }
@@ -432,12 +411,10 @@ namespace CleverSoft
             }
             catch (Exception)
             { }
-
         }
 
-        void pesquisar_Funcionario()
+        private void pesquisar_Funcionario()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -452,20 +429,17 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
             DataGridViewTextBoxColumn col_CPF = new DataGridViewTextBoxColumn();
             col_CPF.Name = "CNPJ_CPF";
             col_CPF.HeaderText = "CNPJ / CPF";
             col_CPF.Width = 160;
             dgv_resultado_pesquisa.Columns.Add(col_CPF);
 
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBFUNCIONARIO WHERE DTEXCLUSAO IS NULL AND NOME LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -476,7 +450,6 @@ namespace CleverSoft
             conexao.dataReader = conexao.cmd.ExecuteReader();
 
             int o = 0;
-
 
             while (conexao.dataReader.Read())
             {
@@ -488,34 +461,26 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Funcionario()
+
+        private void Carregar_Funcionario()
         {
-            try
+            if (frmPermissa != null)
             {
                 frmPermissa.tboxParceiro.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
                 frmPermissa.codParceiro = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception)
-            { }
 
-            try
+            if (frmfechaCaixa != null)
             {
                 frmfechaCaixa.tboxParceiro.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
                 frmfechaCaixa.codParceiro = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception)
-            { }
-
-
         }
 
-        void pesquisar_Cliente()
+        private void pesquisar_Cliente()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -530,20 +495,17 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
             DataGridViewTextBoxColumn col_CPF = new DataGridViewTextBoxColumn();
             col_CPF.Name = "CNPJ_CPF";
             col_CPF.HeaderText = "CNPJ / CPF";
             col_CPF.Width = 160;
             dgv_resultado_pesquisa.Columns.Add(col_CPF);
 
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBCLIENTE WHERE DTEXCLUSAO IS NULL AND RAZAOSOCIAL LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -555,7 +517,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -566,13 +527,11 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Cliente()
-        {
 
+        private void carregar_Cliente()
+        {
             try
             {
                 instFinanceiro.tboxParceiro.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
@@ -604,7 +563,6 @@ namespace CleverSoft
             {
                 instOrdemServico.tboxParceiro.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
                 instOrdemServico.codParceiro = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
-
             }
             catch (Exception)
             { }
@@ -613,17 +571,13 @@ namespace CleverSoft
             {
                 instMonitorOs.tboxParceiro.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["NOME"].Value.ToString();
                 instMonitorOs.codParceiro = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
-
             }
             catch (Exception)
             { }
-
-
         }
 
-        void pesquisar_BancoConta()
+        private void pesquisar_BancoConta()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -638,20 +592,17 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
             DataGridViewTextBoxColumn col_CPF = new DataGridViewTextBoxColumn();
             col_CPF.Name = "CONTA";
             col_CPF.HeaderText = "CONTA";
             col_CPF.Width = 160;
             dgv_resultado_pesquisa.Columns.Add(col_CPF);
 
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBCONTA WHERE DTEXCLUSAO IS NULL AND CONTA LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -663,7 +614,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -674,14 +624,12 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_BancoConta()
+
+        private void carregar_BancoConta()
 
         {
-
             try
             {
                 if (instTransferir.origemDestino == "Origem")
@@ -694,7 +642,6 @@ namespace CleverSoft
                     instTransferir.tboxBancoConta1.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                     instTransferir.codBancoConta1 = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
                 }
-              
             }
             catch (Exception) { }
 
@@ -710,14 +657,14 @@ namespace CleverSoft
                 instaContapagar.tboxBancoConta.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instaContapagar.codBancoConta = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
+            catch (Exception) { }
 
             try
             {
                 instaContapagar.tboxBancoContaP.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instaContapagar.codBancoContaP = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
+            catch (Exception) { }
 
             try
             {
@@ -752,7 +699,7 @@ namespace CleverSoft
                 instCobranca.tboxBancoConta.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instCobranca.codBancoConta = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
+            catch (Exception) { }
 
             try
             {
@@ -760,12 +707,10 @@ namespace CleverSoft
                 frmExtrato.codBancoConta = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
             catch (Exception) { }
-
         }
 
-        void pesquisar_Moeda()
+        private void pesquisar_Moeda()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -780,15 +725,11 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
-
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBMOEDA WHERE DTEXCLUSAO IS NULL AND MOEDA LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -800,7 +741,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -810,13 +750,11 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_Moeda()
-        {
 
+        private void carregar_Moeda()
+        {
             try
             {
                 if (instTransferir.origemDestino == "Origem")
@@ -829,7 +767,6 @@ namespace CleverSoft
                     instTransferir.tboxMoeda1.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                     instTransferir.codMoeda1 = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
                 }
-
             }
             catch (Exception) { }
 
@@ -854,14 +791,12 @@ namespace CleverSoft
             }
             catch (Exception) { }
 
-
             try
             {
                 instFinanceiroNovo.tboxMoeda.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instFinanceiroNovo.codMoeda = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
             catch (Exception) { }
-
 
             try
             {
@@ -875,27 +810,25 @@ namespace CleverSoft
                 frmContasPAgar.tboxMoeda.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 frmContasPAgar.codMoeda = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
+            catch (Exception) { }
 
             try
             {
                 frmContasPAgar.tboxMoedaP.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 frmContasPAgar.codMoedaP = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
+            catch (Exception) { }
 
             try
             {
                 instCobranca.tboxMoeda.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instCobranca.codMoeda = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
-            catch (Exception){}
-           
+            catch (Exception) { }
         }
 
-        void pesquisar_ContaGerencial()
+        private void pesquisar_ContaGerencial()
         {
-
             #region MONTAR GRID CONSULTA
 
             DataGridViewTextBoxColumn col_ID = new DataGridViewTextBoxColumn();
@@ -910,15 +843,11 @@ namespace CleverSoft
             col_NOME.Width = 350;
             dgv_resultado_pesquisa.Columns.Add(col_NOME);
 
-
-
-            #endregion
+            #endregion MONTAR GRID CONSULTA
 
             conexao.Abre_Conexao();
             dgv_resultado_pesquisa.Rows.Clear();
             string SQLCunsultaEmpr = "SELECT * FROM TBCONTAGERENCIAL WHERE DTEXCLUSAO IS NULL AND  ID > 50 AND CONTAGERENCIAL LIKE '%" + tboxPesquisar.Text + "%'";
-
-
 
             conexao.cmd.Connection = conexao.conexao;
             conexao.cmd.CommandText = SQLCunsultaEmpr;
@@ -930,7 +859,6 @@ namespace CleverSoft
 
             int o = 0;
 
-
             while (conexao.dataReader.Read())
             {
                 dgv_resultado_pesquisa.Rows.Add();
@@ -940,11 +868,10 @@ namespace CleverSoft
                 o++;
             }
 
-
             conexao.Fecha_Conexao();
-
         }
-        void carregar_ContaGerencial()
+
+        private void carregar_ContaGerencial()
         {
             try
             {
@@ -955,7 +882,7 @@ namespace CleverSoft
                 instaContapagar.codCategoriaP = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
             catch (Exception)
-            {}
+            { }
             try
             {
                 instFinanceiro.tboxCategoria.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
@@ -981,22 +908,19 @@ namespace CleverSoft
                 frmContasPAgar.codCategoriaP = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
             }
             catch (Exception)
-            {}
+            { }
 
             try
             {
                 instOrdemServico.tboxContaGerencial.Text = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString() + " - " + dgv_resultado_pesquisa.CurrentRow.Cells["DESCRICAO"].Value.ToString();
                 instOrdemServico.codContaGerencial = dgv_resultado_pesquisa.CurrentRow.Cells["ID"].Value.ToString();
-               
             }
             catch (Exception)
             { }
-
         }
 
         private void pesquisar()
         {
-
             if (this.RotinaOrigem == "PESQUISAR CLIENTE")
             {
                 pesquisar_Cliente();
@@ -1022,9 +946,6 @@ namespace CleverSoft
                 pesquisar_Moeda();
             }
 
-
-
-
             if (this.RotinaOrigem == "FECHAR CAIXA")
             {
                 pesquisar_Funcionario();
@@ -1038,18 +959,15 @@ namespace CleverSoft
             if (this.RotinaOrigem == "TRANSFERIR NUMERAIS - MOEDA")
             {
                 pesquisar_Moeda();
-
             }
             if (this.RotinaOrigem == "TRANSFERIR NUMERAIS")
             {
                 pesquisar_BancoConta();
-
             }
             if (this.RotinaOrigem == "EXTRATO CONTA")
             {
                 pesquisar_BancoConta();
             }
-           
 
             if (this.RotinaOrigem == "CADASTRO DE PRODUTOS")
             {
@@ -1089,7 +1007,6 @@ namespace CleverSoft
                 {
                     pesquisar_ContaGerencial();
                 }
-
             }
 
             if (this.RotinaOrigem == "CONTAS A RECEBER")
@@ -1110,7 +1027,6 @@ namespace CleverSoft
                 {
                     pesquisar_ContaGerencial();
                 }
-
             }
 
             if (this.RotinaOrigem == "CADASTRAR COBRANÇA")
@@ -1123,13 +1039,14 @@ namespace CleverSoft
                 {
                     pesquisar_Moeda();
                 }
-
             }
         }
+
         private void frm_Pesquisar_Load(object sender, EventArgs e)
         {
             pesquisar();
         }
+
         private void btn_Pesquisar_Click(object sender, EventArgs e)
         {
             pesquisar();
@@ -1137,7 +1054,6 @@ namespace CleverSoft
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-
             if (this.RotinaOrigem == "PESQUISAR CLIENTE")
             {
                 carregar_Cliente();
@@ -1161,22 +1077,18 @@ namespace CleverSoft
                 carregar_BancoConta();
             }
 
-
-
             if (this.RotinaOrigem == "FECHAR CAIXA")
             {
-                carregar_Funcionario();
+                Carregar_Funcionario();
             }
 
             if (this.RotinaOrigem == "TRANSFERIR NUMERAIS - MOEDA")
             {
                 carregar_Moeda();
-
             }
             if (this.RotinaOrigem == "TRANSFERIR NUMERAIS")
             {
                 carregar_BancoConta();
-
             }
             if (this.RotinaOrigem == "EXTRATO CONTA")
             {
@@ -1185,13 +1097,13 @@ namespace CleverSoft
 
             if (this.RotinaOrigem == "CADASTRAR PERMISSÃO")
             {
-                carregar_Funcionario();
+                Carregar_Funcionario();
             }
 
             if (this.RotinaOrigem == "CADASTRO DE PRODUTOS")
             {
                 carregar_Secao();
-            } 
+            }
             if (this.RotinaOrigem == "CADASTRAR SEÇÃO")
             {
                 carregar_Departamento();
@@ -1248,7 +1160,6 @@ namespace CleverSoft
 
             if (this.RotinaOrigem == "CADASTRAR COBRANÇA")
             {
-               
                 if (this.Text == "PESQUISAR BANCO / CONTA")
                 {
                     carregar_BancoConta();
@@ -1257,7 +1168,6 @@ namespace CleverSoft
                 {
                     carregar_Moeda();
                 }
-              
             }
 
             this.Close();
@@ -1266,7 +1176,6 @@ namespace CleverSoft
         private void iconcerrar_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void btnAdcionar_Click(object sender, EventArgs e)

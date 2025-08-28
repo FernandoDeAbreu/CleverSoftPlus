@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cboxFormaPagamento = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -41,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tboxValor = new System.Windows.Forms.TextBox();
-            this.cboxMoeda = new System.Windows.Forms.ComboBox();
+            this.cboxContribuicao = new System.Windows.Forms.ComboBox();
             this.panelBarraTitulo = new System.Windows.Forms.Panel();
             this.lbl_NomeRotina = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -51,9 +48,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cboxFormaPagamento);
             this.panel1.Controls.Add(this.btnCancelar);
@@ -63,46 +57,13 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tboxValor);
-            this.panel1.Controls.Add(this.cboxMoeda);
+            this.panel1.Controls.Add(this.cboxContribuicao);
             this.panel1.Controls.Add(this.panelBarraTitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(414, 354);
             this.panel1.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label7.Location = new System.Drawing.Point(306, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 23);
-            this.label7.TabIndex = 202;
-            this.label7.Text = "-";
-            this.label7.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label6.Location = new System.Drawing.Point(280, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 23);
-            this.label6.TabIndex = 201;
-            this.label6.Text = "-";
-            this.label6.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label5.Location = new System.Drawing.Point(254, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 23);
-            this.label5.TabIndex = 200;
-            this.label5.Text = "-";
-            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -123,7 +84,6 @@
             this.cboxFormaPagamento.Name = "cboxFormaPagamento";
             this.cboxFormaPagamento.Size = new System.Drawing.Size(378, 44);
             this.cboxFormaPagamento.TabIndex = 198;
-            this.cboxFormaPagamento.DisplayMemberChanged += new System.EventHandler(this.cboxFormaPagamento_DisplayMemberChanged);
             // 
             // btnCancelar
             // 
@@ -200,17 +160,16 @@
             this.tboxValor.Text = "0,00";
             this.tboxValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tboxValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tboxValor_KeyDown);
-            this.tboxValor.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
-            // cboxMoeda
+            // cboxContribuicao
             // 
-            this.cboxMoeda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxMoeda.Font = new System.Drawing.Font("Calibri", 22F);
-            this.cboxMoeda.FormattingEnabled = true;
-            this.cboxMoeda.Location = new System.Drawing.Point(16, 80);
-            this.cboxMoeda.Name = "cboxMoeda";
-            this.cboxMoeda.Size = new System.Drawing.Size(378, 44);
-            this.cboxMoeda.TabIndex = 1;
+            this.cboxContribuicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxContribuicao.Font = new System.Drawing.Font("Calibri", 22F);
+            this.cboxContribuicao.FormattingEnabled = true;
+            this.cboxContribuicao.Location = new System.Drawing.Point(16, 80);
+            this.cboxContribuicao.Name = "cboxContribuicao";
+            this.cboxContribuicao.Size = new System.Drawing.Size(378, 44);
+            this.cboxContribuicao.TabIndex = 1;
             // 
             // panelBarraTitulo
             // 
@@ -266,15 +225,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tboxValor;
-        private System.Windows.Forms.ComboBox cboxMoeda;
+        private System.Windows.Forms.ComboBox cboxContribuicao;
         internal System.Windows.Forms.Panel panelBarraTitulo;
         internal System.Windows.Forms.Label lbl_NomeRotina;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboxFormaPagamento;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
     }
 }

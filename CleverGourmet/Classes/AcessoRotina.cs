@@ -11,7 +11,6 @@ namespace CleverSoft
         Conexao conexao = new Conexao();
         string SQLCunsultaEmpr;
         string nomeRotina;
-        string idFunc;
 
         private void pesquisar_Rotina()
         {
